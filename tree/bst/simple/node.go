@@ -1,8 +1,8 @@
 package simple
 
-type node struct {
+type bstNode struct {
 	k     int
 	v     string
-	left  *node
-	right *node
+	left  *bstNode
+	right *bstNode
 }
