@@ -1,11 +1,18 @@
 // Package simple
-// @Description: 二分搜索树的辅助方法
+// @Description: 二分搜索树的辅助数据结构和方法
 
 package simple
 
 import (
 	"go-ads/pkg/tree/bst"
 )
+
+type bstNode struct {
+	k     int
+	v     string
+	left  *bstNode
+	right *bstNode
+}
 
 // add  *int 主要是更新size
 func (node *bstNode) add(k int, v string, size *int) *bstNode {
