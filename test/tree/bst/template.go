@@ -171,7 +171,7 @@ func testDelete(t *testing.T, prepare prepareFunc) {
 	tree.Bfs(traverseAction(t))
 }
 
-func testDelete2(t *testing.T, prepareEmpty prepareFunc) {
+func testRandomDelete(t *testing.T, prepareEmpty prepareFunc) {
 	size := 10000
 	data := make([]int, size)
 	for i := 0; i < size; i++ {

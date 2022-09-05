@@ -42,8 +42,8 @@ func Test_Delete(t *testing.T) {
 	testDelete(t, prepareUnbalanceBST(true))
 }
 
-func Test_Delete2(t *testing.T) {
-	testDelete2(t, prepareUnbalanceBST(true))
+func Test_RandomDelete(t *testing.T) {
+	testRandomDelete(t, prepareUnbalanceBST(true))
 }
 
 func prepareUnbalanceBST(empty bool) prepareFunc {
