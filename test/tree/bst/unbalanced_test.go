@@ -1,8 +1,8 @@
 package bst
 
 import (
-	"go-ads/tree/bst"
-	"go-ads/tree/bst/simple"
+	"go-ads/pkg/tree/bst"
+	"go-ads/pkg/tree/bst/simple"
 	"testing"
 )
 

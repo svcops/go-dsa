@@ -4,7 +4,7 @@
 package simple
 
 import (
-	"go-ads/tree/bst"
+	"go-ads/pkg/tree/bst"
 )
 
 // add  *int 主要是更新size

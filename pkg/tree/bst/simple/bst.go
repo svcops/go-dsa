@@ -2,7 +2,7 @@ package simple
 
 import (
 	"fmt"
-	"go-ads/tree/bst"
+	"go-ads/pkg/tree/bst"
 )
 
 const empty = ""
