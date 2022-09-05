@@ -1,92 +1,133 @@
 package simple
 
 import (
-	"errors"
 	"fmt"
 	"go-ads/tree/bst"
 )
 
 const empty = ""
 
-type BST struct {
+type unbalancedBST struct {
 	size *int
 	root *bstNode
 }
 
+// NewSimpleBST 这个地方可以优化掉
+func NewSimpleBST() *unbalancedBST {
+	size := 0
+	return &unbalancedBST{
+		size: &size,
+	}
+}
+
 // 是否为空
-func (bst *BST) IsEmpty() bool {
-	return *bst.size == 0
+func (tree *unbalancedBST) IsEmpty() bool {
+	return *tree.size == 0
 }
 
-func (bst *BST) Size() int {
-	return *bst.size
+func (tree *unbalancedBST) Size() int {
+	return *tree.size
 }
 
-func (bst *BST) Add(k int, v string) {
-	bst.root.add(k, v, bst.size)
+func (tree *unbalancedBST) Add(k int, v string) {
+	tree.root = tree.root.add(k, v, tree.size)
 }
 
-// add  *int 主要是更新size
-func (node *bstNode) add(k int, v string, size *int) *bstNode {
-	if node == nil {
-		*size++
-		return &bstNode{
-			k: k,
-			v: v,
+func (tree *unbalancedBST) Get(k int) (string, error) {
+	find := tree.root.get(k)
+	if find == nil {
+		return empty, bst.TreeError(fmt.Sprintf("找不到 k = %d 的值", k))
+	} else {
+		return find.v, nil
+	}
+}
+
+func (tree *unbalancedBST) Contains(k int) bool {
+	find := tree.root.get(k)
+	return find != nil
+}
+
+func (tree *unbalancedBST) Max() (int, string, error) {
+	max := tree.root.max()
+	if max == nil {
+		return 0, empty, bst.TreeError("Not Found Max")
+	} else {
+		return max.k, max.v, nil
+	}
+}
+
+func (tree *unbalancedBST) Min() (int, string, error) {
+	min := tree.root.min()
+	if min == nil {
+		return 0, empty, bst.TreeError("Not Found Min")
+	} else {
+		return min.k, min.v, nil
+	}
+}
+
+// Delete 删除节点
+func (tree *unbalancedBST) Delete(k int) (bool, error) {
+	if !tree.Contains(k) {
+		return false, bst.TreeError(fmt.Sprintf("不存在%d", k))
+	}
+	tree.root = tree.root.delete(k, tree.size)
+	return true, nil
+}
+
+// IsBST 是否是二分搜索树
+func (tree *unbalancedBST) IsBST() bool {
+	var list []int
+	tree.InOrder(func(i int, s string) {
+		list = append(list, i)
+	})
+	for i := 0; i < len(list)-1; i++ {
+		if list[i] > list[i+1] {
+			return false
 		}
 	}
-	if k == node.k {
-		node.v = v
-	} else if k < node.k {
-		node.left = node.left.add(k, v, size)
-	} else {
-		node.right = node.right.add(k, v, size)
-	}
-	return node
-}
-
-func (bst *BST) Get(k int) (string, error) {
-	return bst.root.get(k)
-}
-
-func (node *bstNode) get(k int) (string, error) {
-	if node == nil {
-		return empty, errors.New(fmt.Sprintf("找不到 k = %d 的值", k))
-	}
-
-	if k == node.k {
-		return node.v, nil
-	} else if k < node.k {
-		return node.left.get(k)
-	} else {
-		return node.right.get(k)
-	}
-}
-
-func (bst *BST) Delete(k int) {
-
-}
-
-func (bst *BST) IsBST() bool {
 	return true
 }
 
-func (bst *BST) Dfs(ac bst.Action) {
-
+// Dfs 深度遍历
+func (tree *unbalancedBST) Dfs(ac bst.Action) {
+	// 默认中序遍历
+	tree.root.inOrder(ac)
 }
 
-func (bst *BST) Bfs(ac bst.Action) {
-
+// Bfs 广度遍历
+func (tree *unbalancedBST) Bfs(ac bst.Action) {
+	if tree.IsEmpty() {
+		return
+	}
+	queue := newQueue()
+	queue.add(tree.root)
+	for !queue.isEmpty() {
+		node := queue.poll()
+		ac(node.k, node.v)
+		if node.left != nil {
+			queue.add(node.left)
+		}
+		if node.right != nil {
+			queue.add(node.right)
+		}
+	}
 }
 
-func (bst *BST) PreOrder(ac bst.Action) {
-
+// PreOrder 先序遍历
+func (tree *unbalancedBST) PreOrder(ac bst.Action) {
+	tree.root.preOrder(ac)
 }
 
-func (bst *BST) InOrder(ac bst.Action) {
-
+// InOrder 中序遍历
+func (tree *unbalancedBST) InOrder(ac bst.Action) {
+	tree.root.inOrder(ac)
 }
 
-func (bst *BST) PostOrder(ac bst.Action) {
+// PostOrder 后序遍历
+func (tree *unbalancedBST) PostOrder(ac bst.Action) {
+	tree.root.postOrder(ac)
+}
 
+func (tree *unbalancedBST) IsBalanced() bool {
+	return false
 }
