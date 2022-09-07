@@ -20,7 +20,7 @@ func NewSimpleBST() *unbalancedBST {
 	}
 }
 
-// 是否为空
+// IsEmpty 是否为空
 func (tree *unbalancedBST) IsEmpty() bool {
 	return *tree.size == 0
 }
