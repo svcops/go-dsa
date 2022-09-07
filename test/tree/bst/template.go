@@ -10,9 +10,25 @@ import (
 	"testing"
 )
 
-type prepareFunc func() bst.BST
+// TestBstCreator 测试bst的创建器
+type TestBstCreator func() bst.BST
 
-func testAdd(t *testing.T, prepareEmpty prepareFunc) {
+// Prepare 函数式模板
+func Prepare(bstCreator TestBstCreator, empty bool) bst.BST {
+	// 准备一个空的不平衡的二分搜索树
+	if empty {
+		return bstCreator()
+	} else {
+		// 准备一个包含数据的不平衡的二分搜索树
+		tree := bstCreator()
+		tree.Add(2, "BBB")
+		tree.Add(1, "AAA")
+		tree.Add(3, "CCC")
+		return tree
+	}
+}
+
+func TestAdd(t *testing.T, creator TestBstCreator) {
 	tests := []struct {
 		data map[int]string
 		size int
@@ -37,7 +53,7 @@ func testAdd(t *testing.T, prepareEmpty prepareFunc) {
 	}
 
 	for _, test := range tests {
-		tree := prepareEmpty()
+		tree := Prepare(creator, true)
 
 		for k, v := range test.data {
 			tree.Add(k, v)
@@ -50,8 +66,8 @@ func testAdd(t *testing.T, prepareEmpty prepareFunc) {
 	}
 }
 
-func testGet(t *testing.T, prepareEmpty prepareFunc) {
-	tree := prepareEmpty()
+func TestGet(t *testing.T, creator TestBstCreator) {
+	tree := Prepare(creator, true)
 	tree.Add(2, "BBB")
 	tree.Add(1, "AAA")
 	tree.Add(3, "CCC")
@@ -97,8 +113,8 @@ func testGet(t *testing.T, prepareEmpty prepareFunc) {
 	}
 }
 
-func testIsBST(t *testing.T, prepare prepareFunc) {
-	if isBST := prepare().IsBST(); isBST {
+func TestIsBST(t *testing.T, creator TestBstCreator) {
+	if isBST := Prepare(creator, false).IsBST(); isBST {
 		t.Logf("是二分搜索树")
 	} else {
 		t.Errorf("不是二分搜索树")
@@ -111,28 +127,28 @@ func traverseAction(t *testing.T) func(int, string) {
 	}
 }
 
-func testBfs(t *testing.T, prepare prepareFunc) {
-	prepare().Bfs(traverseAction(t))
+func TestBfs(t *testing.T, creator TestBstCreator) {
+	Prepare(creator, false).Bfs(traverseAction(t))
 }
 
-func testDfs(t *testing.T, prepare prepareFunc) {
-	prepare().Dfs(traverseAction(t))
+func TestDfs(t *testing.T, creator TestBstCreator) {
+	Prepare(creator, false).Dfs(traverseAction(t))
 }
 
-func testPreOrder(t *testing.T, prepare prepareFunc) {
-	prepare().PreOrder(traverseAction(t))
+func TestPreOrder(t *testing.T, creator TestBstCreator) {
+	Prepare(creator, false).PreOrder(traverseAction(t))
 }
 
-func testInOrder(t *testing.T, prepare prepareFunc) {
-	prepare().InOrder(traverseAction(t))
+func TestInOrder(t *testing.T, creator TestBstCreator) {
+	Prepare(creator, false).InOrder(traverseAction(t))
 }
 
-func testPostOrder(t *testing.T, prepare prepareFunc) {
-	prepare().PostOrder(traverseAction(t))
+func TestPostOrder(t *testing.T, creator TestBstCreator) {
+	Prepare(creator, false).PostOrder(traverseAction(t))
 }
 
-func testDelete(t *testing.T, prepare prepareFunc) {
-	tree := prepare()
+func TestDelete(t *testing.T, creator TestBstCreator) {
+	tree := Prepare(creator, true)
 
 	keys := []int{2, 1, 4, 3, 5}
 
@@ -171,28 +187,20 @@ func testDelete(t *testing.T, prepare prepareFunc) {
 	tree.Bfs(traverseAction(t))
 }
 
-func testRandomDelete(t *testing.T, prepareEmpty prepareFunc) {
-	size := 10000
-	data := make([]int, size)
-	for i := 0; i < size; i++ {
-		// data = append(data, rand.Intn(size*100))
-		data[i] = rand.Intn(size * 100)
-	}
+// TestRandomDelete 测试随机删除
+func TestRandomDelete(t *testing.T, creator TestBstCreator, size, max int) {
+	tree := creator()
 
-	tree := prepareEmpty()
-
-	for i := 0; i < size; i++ {
-		tree.Add(data[i], strconv.Itoa(data[i]))
-	}
+	data := RandomDataInit(tree, size, max)
 
 	beforeSize := tree.Size()
-	t.Logf("Before Delete. Size is %d\n", beforeSize)
+	t.Logf("Before Delete.(data.len = %d) (tree.size = %d) \n", size, beforeSize)
 
 	repeatCount := 0
 	for i := 0; i < size; i++ {
 		_, err := tree.Delete(data[i])
 		if err != nil {
-			t.Logf("Delete Repeated value %d\n", data[i])
+			// t.Logf("Delete Repeated value %d\n", data[i])
 			repeatCount++
 		}
 	}
@@ -204,5 +212,18 @@ func testRandomDelete(t *testing.T, prepareEmpty prepareFunc) {
 			"(beforeSize = %d,repeateCount = %d)\n",
 			beforeSize, repeatCount)
 	}
+}
 
+// RandomDataInit 随机数据初始化
+func RandomDataInit(bst bst.BST, size, max int) []int {
+	data := make([]int, size)
+	for i := 0; i < size; i++ {
+		// data = append(data, rand.Intn(size*100))
+		data[i] = rand.Intn(max)
+	}
+
+	for i := 0; i < size; i++ {
+		bst.Add(data[i], strconv.Itoa(data[i]))
+	}
+	return data
 }

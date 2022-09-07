@@ -1,10 +1,10 @@
 package sort
 
 import (
-	"go-ads/pkg/sort"
-	"go-ads/pkg/sort/bubble"
-	"go-ads/pkg/sort/insert"
-	"go-ads/pkg/sort/quick"
+	"go-ads/pkg/sorter"
+	"go-ads/pkg/sorter/bubble"
+	"go-ads/pkg/sorter/insert"
+	"go-ads/pkg/sorter/quick"
 	"testing"
 )
 
@@ -18,7 +18,7 @@ func Test_Bubble(t *testing.T) {
 	bubble.Sort(arr)
 
 	// 验证
-	sorted := sort.IsSorted(arr)
+	sorted := sorter.IsSorted(arr)
 
 	if !sorted {
 		t.Error("冒泡排序顺序错误")
@@ -29,7 +29,7 @@ func Test_Insert_1(t *testing.T) {
 	arr := generateArr(size, simple, t)
 
 	insert.Sort1(arr)
-	sorted := sort.IsSorted(arr)
+	sorted := sorter.IsSorted(arr)
 
 	if !sorted {
 		t.Error("插入排序方式一排序错误")
@@ -40,7 +40,7 @@ func Test_Insert_2(t *testing.T) {
 	arr := generateArr(size, simple, t)
 
 	insert.Sort2(arr)
-	sorted := sort.IsSorted(arr)
+	sorted := sorter.IsSorted(arr)
 	if !sorted {
 		t.Error("插入排序方式二排序错误")
 	}
@@ -51,7 +51,7 @@ func Test_Quick_OneWay(t *testing.T) {
 
 	quick.SortOneWay(arr)
 
-	sorted := sort.IsSorted(arr)
+	sorted := sorter.IsSorted(arr)
 	if !sorted {
 		t.Error("单路快排顺序错误")
 	}
@@ -64,12 +64,12 @@ func Test_Quick_TwoWay(t *testing.T) {
 	quick.SortTwoWay(arr)
 
 	// 验证排序性
-	sorted := sort.IsSorted(arr)
+	sorted := sorter.IsSorted(arr)
 	if !sorted {
 		t.Error("双路快排顺序错误")
 	}
 	// 验证正确性
-	equals := sort.Equals(cp, arr)
+	equals := sorter.Equals(cp, arr)
 	if !equals {
 		t.Error("双路快排元素错误")
 	}

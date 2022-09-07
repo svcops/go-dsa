@@ -1,10 +1,11 @@
-// Package simple
+// Package unbalanced
 // @Description: 二分搜索树的辅助数据结构和方法
 
-package simple
+package unbalanced
 
 import (
 	"go-ads/pkg/tree/bst"
+	"log"
 )
 
 type bstNode struct {
@@ -33,48 +34,17 @@ func (node *bstNode) add(k int, v string, size *int) *bstNode {
 	return node
 }
 
-func (node *bstNode) get(k int) *bstNode {
-	if node == nil {
-		return nil
-	}
-	if k == node.k {
-		return node
-	} else if k < node.k {
-		return node.left.get(k)
-	} else {
-		return node.right.get(k)
-	}
-}
+// ***** ***** ***** ***** ***** ***** ***** ***** ***** *****
 
-func (node *bstNode) max() *bstNode {
-	if node == nil {
-		return nil
-	}
-	if node.right == nil {
-		return node
-	}
-	return node.right.max()
-}
-
-func (node *bstNode) min() *bstNode {
-	if node == nil {
-		return nil
-	}
-	if node.left == nil {
-		return node
-	}
-	return node.left.min()
-}
-
-func (node *bstNode) delete(k int, size *int) *bstNode {
+func (node *bstNode) delete(k int, size *int, debug bool) *bstNode {
 	if node == nil {
 		return nil
 	}
 	if k < node.k {
-		node.left = node.left.delete(k, size)
+		node.left = node.left.delete(k, size, debug)
 		return node
 	} else if k > node.k {
-		node.right = node.right.delete(k, size)
+		node.right = node.right.delete(k, size, debug)
 		return node
 	} else {
 		if node.left == nil && node.right == nil {
@@ -90,12 +60,16 @@ func (node *bstNode) delete(k int, size *int) *bstNode {
 			*size--
 			return node.left
 		}
+		if debug {
+			log.Println("删除节点寻找找右子树的最小值")
+		}
+
 		// 找右子树的最小值
 		rightMin := node.right.min()
 
 		// 1. 先删除
 		// 为什么要先删除， 如果先赋值 node.left ,那么删除就走不到上面三个if的判断，上面的三个的if是真正删除
-		rightMin.right = node.right.delete(rightMin.k, size)
+		rightMin.right = node.right.delete(rightMin.k, size, debug)
 
 		// 2. 后给节点 当前节点的左节点给 rightMin
 		rightMin.left = node.left
@@ -105,6 +79,8 @@ func (node *bstNode) delete(k int, size *int) *bstNode {
 		return rightMin
 	}
 }
+
+// ***** ***** ***** ***** ***** ***** ***** ***** ***** *****
 
 func (node *bstNode) preOrder(ac bst.Action) {
 	if node == nil {

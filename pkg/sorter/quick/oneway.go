@@ -1,10 +1,10 @@
 package quick
 
 import (
-	"go-ads/pkg/sort"
+	"go-ads/pkg/sorter"
 )
 
-func SortOneWay[T sort.Iterm](arr []T) {
+func SortOneWay[T sorter.Iterm](arr []T) {
 	if arr == nil || len(arr) <= 1 {
 		return
 	}
@@ -13,7 +13,7 @@ func SortOneWay[T sort.Iterm](arr []T) {
 }
 
 // sortOneWay [l ... r] 闭区间
-func sortOneWay[T sort.Iterm](arr []T, l, r int) {
+func sortOneWay[T sorter.Iterm](arr []T, l, r int) {
 	if l >= r {
 		return
 	}
@@ -23,7 +23,7 @@ func sortOneWay[T sort.Iterm](arr []T, l, r int) {
 }
 
 // partitionOneWay 对arr[l....r]  闭区间的部分进行 partition 操作
-func partitionOneWay[T sort.Iterm](arr []T, l, r int) int {
+func partitionOneWay[T sorter.Iterm](arr []T, l, r int) int {
 	v := arr[l]
 	// 对 [l+1 ... R] 的数据进行比较
 	// 初始化一个左边的索引,默认l
@@ -33,10 +33,10 @@ func partitionOneWay[T sort.Iterm](arr []T, l, r int) int {
 			continue
 		} else {
 			// 要放到左边
-			sort.Swap(arr, indexOfLeftMin+1, i)
+			sorter.Swap(arr, indexOfLeftMin+1, i)
 			indexOfLeftMin++
 		}
 	}
-	sort.Swap(arr, l, indexOfLeftMin)
+	sorter.Swap(arr, l, indexOfLeftMin)
 	return indexOfLeftMin
 }

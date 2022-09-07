@@ -1,9 +1,9 @@
 package quick
 
-import "go-ads/pkg/sort"
+import "go-ads/pkg/sorter"
 
 // sortOneWay [l ... r] 闭区间
-func quickSort[T sort.Iterm](arr []T, l, r int,
+func quickSort[T sorter.Iterm](arr []T, l, r int,
 	partition func([]T, int, int) int) {
 	if l >= r {
 		return

@@ -85,24 +85,39 @@ func (h *heap) ExtractMax() (float64, error) {
 func (h *heap) shiftDown(cur int) {
 	left, right := cur*2, cur*2+1
 	if left <= h.size || right <= h.size {
+		// if left == h.size {
+		// 	// 没有右子树,也是最后一次比较
+		// 	if h.values[left] > h.values[cur] {
+		// 		swap(h.values, cur, left)
+		// 	}
+		// 	return
+		// } else {
+		// 	// 有右子树,不确定是不是最后一次
+		// 	var subMax int
+		// 	if h.values[left] > h.values[right] {
+		// 		subMax = left
+		// 	} else {
+		// 		subMax = right
+		// 	}
+		// 	if h.values[subMax] > h.values[cur] {
+		// 		swap(h.values, cur, subMax)
+		// 		h.shiftDown(subMax)
+		// 	}
+		// }
+		var choose int
 		if left == h.size {
-			// 没有右子树,也是最后一次比较
-			if h.values[left] > h.values[cur] {
-				swap(h.values, cur, left)
-			}
-			return
+			choose = left
 		} else {
-			// 有右子树,不确定是不是最后一次
-			var subMax int
 			if h.values[left] > h.values[right] {
-				subMax = left
+				choose = left
 			} else {
-				subMax = right
+				choose = right
 			}
-			if h.values[subMax] > h.values[cur] {
-				swap(h.values, cur, subMax)
-				h.shiftDown(subMax)
-			}
+		}
+
+		if h.values[choose] > h.values[cur] {
+			swap(h.values, cur, choose)
+			h.shiftDown(choose)
 		}
 	}
 }

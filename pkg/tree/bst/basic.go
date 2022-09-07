@@ -13,9 +13,6 @@ type BST interface {
 	// Size 大小
 	Size() int
 
-	// Add 新增一个元素
-	Add(int, string)
-
 	// Get 获取值
 	Get(int) (string, error)
 
@@ -44,6 +41,13 @@ type BST interface {
 	//  @return error
 	//
 	Min() (int, string, error)
+
+	// Add
+	//  @Description:  新增 k ,v
+	//  @param int
+	//  @param string
+	//
+	Add(int, string)
 
 	// Delete
 	//  @Description: 删除值
@@ -96,6 +100,13 @@ type BST interface {
 	//  @return bool
 	//
 	IsBalanced() bool
+
+	//
+	// SetDebug
+	//  @Description: 设置debug打印
+	//  @param debug
+	//
+	SetDebug(debug bool)
 }
 
 // TreeError 自定义tree异常

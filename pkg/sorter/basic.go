@@ -1,4 +1,4 @@
-package sort
+package sorter
 
 import "golang.org/x/exp/slices"
 

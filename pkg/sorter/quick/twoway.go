@@ -1,10 +1,10 @@
 package quick
 
 import (
-	"go-ads/pkg/sort"
+	"go-ads/pkg/sorter"
 )
 
-func SortTwoWay[T sort.Iterm](arr []T) {
+func SortTwoWay[T sorter.Iterm](arr []T) {
 	if arr == nil || len(arr) <= 1 {
 		return
 	}
@@ -13,7 +13,7 @@ func SortTwoWay[T sort.Iterm](arr []T) {
 }
 
 // sortTwoWay 双路快排
-func sortTwoWay[T sort.Iterm](arr []T, l, r int) {
+func sortTwoWay[T sorter.Iterm](arr []T, l, r int) {
 	if l >= r {
 		// 说明不能在分了
 		return
@@ -23,7 +23,7 @@ func sortTwoWay[T sort.Iterm](arr []T, l, r int) {
 	sortTwoWay(arr, mid+1, r)
 }
 
-func partitionTwoWay[T sort.Iterm](arr []T, l, r int) int {
+func partitionTwoWay[T sorter.Iterm](arr []T, l, r int) int {
 	v := arr[l]
 	i, j := l+1, r
 	for true {
@@ -38,10 +38,10 @@ func partitionTwoWay[T sort.Iterm](arr []T, l, r int) int {
 			break
 		}
 		// 交换完成，并进入下一轮循环
-		sort.Swap(arr, i, j)
+		sorter.Swap(arr, i, j)
 		i++
 		j--
 	}
-	sort.Swap(arr, l, j)
+	sorter.Swap(arr, l, j)
 	return j
 }

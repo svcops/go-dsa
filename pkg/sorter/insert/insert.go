@@ -4,11 +4,11 @@
 package insert
 
 import (
-	"go-ads/pkg/sort"
+	"go-ads/pkg/sorter"
 )
 
 // Sort1 插入排序的第一种实现
-func Sort1[T sort.Iterm](arr []T) {
+func Sort1[T sorter.Iterm](arr []T) {
 	if arr == nil || len(arr) <= 1 {
 		return
 	}
@@ -17,14 +17,14 @@ func Sort1[T sort.Iterm](arr []T) {
 		// 寻找元素arr[i]合适的插入位置
 		for j := i; j > 0; j-- {
 			if arr[j] < arr[j-1] {
-				sort.Swap(arr, j, j-1)
+				sorter.Swap(arr, j, j-1)
 			}
 		}
 	}
 }
 
 // Sort2 插入排序的优化
-func Sort2[T sort.Iterm](arr []T) {
+func Sort2[T sorter.Iterm](arr []T) {
 	if arr == nil || len(arr) <= 1 {
 		return
 	}
