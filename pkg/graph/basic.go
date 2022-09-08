@@ -29,6 +29,14 @@ type Graph interface {
 	//
 	GetAllVertex() Set
 
+	//
+	// Contains
+	//  @Description: 是否包含名称为v的顶点
+	//  @param string
+	//  @return bool
+	//
+	Contains(v string) bool
+
 	// Connect
 	//  @Description: 两点直接创建连接
 	//  @param from
@@ -53,6 +61,16 @@ type Graph interface {
 	//  @return bool
 	//
 	HasEdge(from, to string) bool
+
+	//
+	// GetEdgeWeight
+	//  @Description: 获取边的权重
+	//  @param from
+	//  @param string
+	//  @return bool 是否存在边
+	//  @return float64 如果存在，返回权重值
+	//
+	GetEdgeWeight(from, to string) (float64, bool)
 
 	//
 	// Show

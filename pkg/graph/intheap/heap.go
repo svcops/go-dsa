@@ -1,4 +1,4 @@
-package heap
+package intheap
 
 type IntMinHeap []int // 定义一个类型
 

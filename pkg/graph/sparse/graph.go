@@ -53,6 +53,10 @@ func (sp *implGraph) GetAllVertex() graph.Set {
 	return sp.allVertex
 }
 
+func (sp *implGraph) Contains(v string) bool {
+	return sp.allVertex.Contains(v)
+}
+
 func (sp *implGraph) Connect(from, to string, weight float64) {
 	if from == to {
 		// 忽略自环边
@@ -86,6 +90,8 @@ func (sp *implGraph) Connect(from, to string, weight float64) {
 		}
 	}
 
+	sp.allVertex.Add(from)
+	sp.allVertex.Add(to)
 }
 
 // Adj 邻边迭代器，可以优化
@@ -99,8 +105,22 @@ func (sp *implGraph) Adj(v string) map[string]float64 {
 }
 
 func (sp *implGraph) HasEdge(from, to string) bool {
-	// TODO implement me
-	panic("implement me")
+	_, has := sp.GetEdgeWeight(from, to)
+	return has
+}
+
+func (sp *implGraph) GetEdgeWeight(from, to string) (float64, bool) {
+	if !sp.Contains(from) || !sp.Contains(to) || from == to {
+		// 忽略自环边
+		return -1, false
+	}
+	adj := sp.Adj(from)
+	for v, w := range adj {
+		if v == to {
+			return w, true
+		}
+	}
+	return -1, false
 }
 
 func (sp *implGraph) Show() {

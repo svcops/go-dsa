@@ -3,7 +3,7 @@ package graph
 import (
 	"container/heap"
 	"fmt"
-	intMinHeap "go-ads/pkg/graph/heap"
+	intMinHeap "go-ads/pkg/graph/intheap"
 	"testing"
 )
 
@@ -12,10 +12,16 @@ func TestIntHeap(t *testing.T) {
 	heap.Init(h)                                              // 初始化heap
 	fmt.Println(*h)
 	fmt.Println(heap.Pop(h)) // 调用pop
-	heap.Push(h, 6)          // 调用push
+
+	push(h)
+
 	fmt.Println(*h)
 	for len(*h) > 0 {
 		fmt.Printf("%d ", heap.Pop(h))
 	}
 	fmt.Println()
+}
+
+func push(h *intMinHeap.IntMinHeap) {
+	heap.Push(h, 6) // 调用push
 }

@@ -73,3 +73,12 @@ func Test_Show(t *testing.T) {
 		g.Show()
 	}
 }
+
+func TestGetAllVertex(t *testing.T) {
+	g := sparse.CreateSparseGraph(true, false)
+	g.Connect("a", "b", 1)
+
+	if g.GetAllVertex().Size() != 2 {
+		t.Error("g.GetAllVertex() error !!!")
+	}
+}
