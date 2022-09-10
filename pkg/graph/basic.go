@@ -67,8 +67,8 @@ type Graph interface {
 	//  @Description: 获取边的权重
 	//  @param from
 	//  @param string
-	//  @return bool 是否存在边
 	//  @return float64 如果存在，返回权重值
+	//  @return bool 是否存在边
 	//
 	GetEdgeWeight(from, to string) (float64, bool)
 
