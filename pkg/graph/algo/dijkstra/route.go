@@ -6,27 +6,28 @@ package dijkstra
 import "fmt"
 
 //
-// HasPath
+// HasShortestRoute
 //  @Description: 是否存在从 source 到 v的路径
 //  @receiver d
 //  @param v
 //  @return bool
 //
-func (d *dijkstra) HasPath(dest string) bool {
+func (d *dijkstra) HasShortestRoute(dest string) bool {
 	if !d.g.Contains(dest) {
-		fmt.Println("不存在顶点", dest)
+		fmt.Println("不存在顶点\n", dest)
 		return false
 	}
-	source := *d.source
-	_, find := d.distToSource[source]
+	// _, find := d.distToSource[source]
+	find := d.marked[dest]
 	if !find {
-		fmt.Printf("从 %s 到 %s 不存在路径", source, dest)
+		source := *d.source
+		fmt.Printf("从 %s 到 %s 不存在路径\n", source, dest)
 	}
 	return find
 }
 
 //
-// Route
+// ShortestRoute
 //  @Description: 路劲
 //  @receiver d
 //  @param dest
@@ -35,8 +36,8 @@ func (d *dijkstra) HasPath(dest string) bool {
 //  @return float64 最短距离
 //  @return bool 是否存在
 //
-func (d *dijkstra) Route(dest string) ([]string, []float64, float64, bool) {
-	if !d.HasPath(dest) {
+func (d *dijkstra) ShortestRoute(dest string) ([]string, []float64, float64, bool) {
+	if !d.HasShortestRoute(dest) {
 		return nil, nil, -1, false
 	}
 
@@ -67,17 +68,17 @@ func (d *dijkstra) Route(dest string) ([]string, []float64, float64, bool) {
 }
 
 //
-// PrintRoute
+// PrintShortestRoute
 //  @Description: 路径打印
 //  @receiver d
 //  @param v
 //
-func (d *dijkstra) PrintRoute(dest string) {
-	if !d.HasPath(dest) {
+func (d *dijkstra) PrintShortestRoute(dest string) {
+	if !d.HasShortestRoute(dest) {
 		return
 	}
 	source := *d.source
-	route, weights, distance, _ := d.Route(dest)
+	route, weights, distance, _ := d.ShortestRoute(dest)
 	fmt.Printf("从 %s 到 %s 的最短距离为 : %g\n", source, dest, distance)
 
 	fmt.Print("路径: ")

@@ -6,8 +6,15 @@ import (
 	"testing"
 )
 
+const (
+	directed = true
+	// undirected = false
+	// cover      = true
+	uncover = false
+)
+
 func TestDijkstraL(t *testing.T) {
-	g := sparse.CreateSparseGraph(true, false)
+	g := sparse.CreateSparseGraph(directed, uncover)
 
 	g.Connect("A", "B", 2)
 	g.Connect("B", "C", 3)
@@ -16,11 +23,11 @@ func TestDijkstraL(t *testing.T) {
 	d := dijkstra.CreateDijkstraAlgo(g)
 	d.CalculateByL("A")
 
-	d.PrintRoute("C")
+	d.PrintShortestRoute("C")
 }
 
 func TestDijkstraR(t *testing.T) {
-	g := sparse.CreateSparseGraph(true, false)
+	g := sparse.CreateSparseGraph(directed, uncover)
 
 	g.Connect("A", "B", 2)
 	g.Connect("B", "C", 3)
@@ -29,11 +36,25 @@ func TestDijkstraR(t *testing.T) {
 	d := dijkstra.CreateDijkstraAlgo(g)
 	d.CalculateByR("A")
 
-	d.PrintRoute("C")
+	d.PrintShortestRoute("C")
+}
+
+func TestHasShortestPath(t *testing.T) {
+	g := sparse.CreateSparseGraph(directed, uncover)
+
+	g.Connect("A", "B", 2)
+	g.Connect("B", "C", 3)
+	g.Connect("A", "C", 6)
+	g.Connect("D", "C", 1)
+
+	d := dijkstra.CreateDijkstraAlgo(g)
+	d.CalculateByL("A")
+
+	t.Log("has shortest root from ", d.HasShortestRoute("D"))
 }
 
 func TestDijkstra(t *testing.T) {
-	g := sparse.CreateSparseGraph(false, false)
+	g := sparse.CreateSparseGraph(directed, uncover)
 
 	g.Connect("A", "B", 4)
 	g.Connect("A", "D", 2)
@@ -49,7 +70,7 @@ func TestDijkstra(t *testing.T) {
 	dests := []string{"A", "B", "C", "D", "E"}
 
 	for _, dest := range dests {
-		d.PrintRoute(dest)
+		d.PrintShortestRoute(dest)
 	}
 
 }

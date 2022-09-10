@@ -16,18 +16,18 @@ type Graph interface {
 	EdgeSize() int
 
 	//
-	// VertexSize
+	// VerticesNum
 	//  @Description: 顶点的个数
 	//  @return int
 	//
-	VertexSize() int
+	VerticesNum() int
 
 	//
-	// GetAllVertex
+	// Vertices
 	//  @Description: 获取所有的顶点
 	//  @return Set
 	//
-	GetAllVertex() Set
+	Vertices() Set
 
 	//
 	// Contains

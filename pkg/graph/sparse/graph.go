@@ -45,11 +45,11 @@ func (sp *implGraph) EdgeSize() int {
 	return size
 }
 
-func (sp *implGraph) VertexSize() int {
+func (sp *implGraph) VerticesNum() int {
 	return len(sp.g)
 }
 
-func (sp *implGraph) GetAllVertex() graph.Set {
+func (sp *implGraph) Vertices() graph.Set {
 	return sp.allVertex
 }
 
@@ -125,7 +125,7 @@ func (sp *implGraph) GetEdgeWeight(from, to string) (float64, bool) {
 
 func (sp *implGraph) Show() {
 	fmt.Printf("Graph info : direct = %t ; cover = %t ; vertexSize = %d ; edgeSize = %d) \n",
-		sp.IsDirect(), sp.cover, sp.VertexSize(), sp.EdgeSize())
+		sp.IsDirect(), sp.cover, sp.VerticesNum(), sp.EdgeSize())
 	g := sp.g
 	for from, edges := range g {
 		fmt.Printf("[ from = %s ] : ", from)
