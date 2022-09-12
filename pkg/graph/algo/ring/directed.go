@@ -69,6 +69,7 @@ func (dr *directedRing) directedDfs(from string, dfsStatus map[string]int) {
 		if dfsStatus[to] == dfsInit {
 			dr.directedDfs(to, dfsStatus)
 		} else if dfsStatus[to] == dfsStart {
+			// 第二次进入 from 节点
 			dr.hasRing = true
 			if dr.debug {
 				log.Printf("在节点 %s 找到了环", to)
