@@ -27,7 +27,10 @@ func (r *ring) Calculate() {
 		}
 		dr.calculate()
 	} else {
-
+		dr := &undirectedRing{
+			ring: r,
+		}
+		dr.calculate()
 	}
 }
 
