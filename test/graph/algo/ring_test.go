@@ -6,6 +6,11 @@ import (
 	"testing"
 )
 
+//
+// Test_Ring1
+//  @Description: 有向图有环测试
+//  @param t
+//
 func Test_Ring1(t *testing.T) {
 	g := sparse.CreateSparseGraph(true, false)
 	g.Connect("A", "B", 1)
@@ -29,6 +34,11 @@ func Test_Ring1(t *testing.T) {
 	t.Log("第二次计算是否有环", algo.HasRing())
 }
 
+//
+// Test_Ring2
+//  @Description: 有向图无环测试
+//  @param t
+//
 func Test_Ring2(t *testing.T) {
 	g := sparse.CreateSparseGraph(true, false)
 	g.Connect("A", "B", 1)
@@ -47,6 +57,11 @@ func Test_Ring2(t *testing.T) {
 
 }
 
+//
+// Test_Ring3
+//  @Description: 无向图有环测试
+//  @param t
+//
 func Test_Ring3(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, false)
 	g.Connect("A", "B", 1)
@@ -74,12 +89,22 @@ func Test_Ring3(t *testing.T) {
 
 }
 
+//
+// Test_Ring4
+//  @Description: 无向图无环测试
+//  @param t
+//
 func Test_Ring4(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, false)
 	g.Connect("A", "B", 1)
 	g.Connect("A", "C", 1)
 	g.Connect("A", "D", 1)
 	g.Connect("A", "E", 1)
+	//     B
+	//     |
+	// C - A - D
+	//     |
+	//     E
 
 	algo := ring.CreateRingAlgo(g)
 
