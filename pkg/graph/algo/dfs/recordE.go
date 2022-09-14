@@ -22,7 +22,7 @@ func (d *dfs) PrintRoutesByE(src, dest string) {
 		}
 		fmt.Println()
 		fmt.Println("路径的权重为:", routeWeight)
-
+		fmt.Println()
 	}
 
 }

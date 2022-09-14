@@ -52,6 +52,7 @@ func TestFindRoutes1(t *testing.T) {
 //
 func TestFindRoutes2(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, true)
+	// g := dense.CreateDenseGraph(10, false, true)
 
 	g.Connect(a, b, 1.0)
 	g.Connect(a, c, 1.0)

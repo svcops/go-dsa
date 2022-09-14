@@ -36,7 +36,7 @@ func (sp *implGraph) IsDirect() bool {
 	return sp.direct
 }
 
-func (sp *implGraph) EdgeSize() int {
+func (sp *implGraph) EdgesNum() int {
 	// TODO implement me
 	size := 0
 	for _, es := range sp.g {
@@ -124,8 +124,8 @@ func (sp *implGraph) GetEdgeWeight(from, to string) (float64, bool) {
 }
 
 func (sp *implGraph) Show() {
-	fmt.Printf("Graph info : direct = %t ; cover = %t ; vertexSize = %d ; edgeSize = %d) \n",
-		sp.IsDirect(), sp.cover, sp.VerticesNum(), sp.EdgeSize())
+	fmt.Printf("SparseGraph info : direct = %t ; cover = %t ; vertexSize = %d ; edgeSize = %d) \n",
+		sp.IsDirect(), sp.cover, sp.VerticesNum(), sp.EdgesNum())
 	g := sp.g
 	for from, edges := range g {
 		fmt.Printf("[ from = %s ] : ", from)

@@ -9,11 +9,11 @@ type Graph interface {
 	IsDirect() bool
 
 	//
-	// EdgeSize
+	// EdgesNum
 	//  @Description: 边的个数
 	//  @return int
 	//
-	EdgeSize() int
+	EdgesNum() int
 
 	//
 	// VerticesNum

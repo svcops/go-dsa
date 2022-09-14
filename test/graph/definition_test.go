@@ -2,6 +2,7 @@ package graph
 
 import (
 	"go-ads/pkg/graph"
+	"go-ads/pkg/graph/dense"
 	"go-ads/pkg/graph/sparse"
 	"testing"
 )
@@ -72,6 +73,16 @@ func Test_Show(t *testing.T) {
 		}
 		g.Show()
 	}
+
+	for _, test := range tests {
+		// t.Logf("show graph; direct = %v ; cover = %v", test.direct, test.cover)
+		g = dense.CreateDenseGraph(5, test.direct, test.cover)
+
+		for _, d := range test.data {
+			g.Connect(d.from, d.to, d.weight)
+		}
+		g.Show()
+	}
 }
 
 func TestGetAllVertex(t *testing.T) {
@@ -81,4 +92,15 @@ func TestGetAllVertex(t *testing.T) {
 	if g.Vertices().Size() != 2 {
 		t.Error("g.Vertices() error !!!")
 	}
+}
+
+func TestDenseShow(t *testing.T) {
+
+	g := dense.CreateDenseGraph(3, false, false)
+
+	g.Connect("B", "C", 1)
+	g.Connect("A", "B", 1)
+	g.Connect("A", "C", 1)
+
+	g.Show()
 }

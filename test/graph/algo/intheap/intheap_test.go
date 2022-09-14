@@ -1,9 +1,9 @@
-package graph
+package intheap
 
 import (
 	"container/heap"
 	"fmt"
-	intMinHeap "go-ads/pkg/graph/intheap"
+	intMinHeap "go-ads/pkg/graph/algo/intheap"
 	"testing"
 )
 
