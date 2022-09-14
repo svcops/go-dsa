@@ -1,4 +1,4 @@
-package algo
+package dijkastra
 
 import (
 	"go-ads/pkg/graph/algo/dijkstra"

@@ -1,4 +1,4 @@
-package algo
+package components
 
 import (
 	"go-ads/pkg/graph/algo/components"
