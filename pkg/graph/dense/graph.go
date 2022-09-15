@@ -167,13 +167,20 @@ func (de *implGraph) Adj(v string) map[string]float64 {
 	if !de.Contains(v) {
 		return make(map[string]float64)
 	}
-
-	vs := de.g[de.strToI[v]]
-
 	adj := make(map[string]float64)
-	for j, weight := range vs {
-		if weight != 0 {
-			// 有边
+
+	// vs := de.g[de.strToI[v]]
+	// for j, weight := range vs {
+	// 	if weight != 0 {
+	// 		// 有边
+	// 		adj[de.iToStr[j]] = weight
+	// 	}
+	// }
+
+	i := de.strToI[v]
+	for j := 0; j < de.VerticesNum(); j++ {
+		weight := de.g[i][j]
+		if weight != 0.0 {
 			adj[de.iToStr[j]] = weight
 		}
 	}
