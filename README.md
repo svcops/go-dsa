@@ -10,8 +10,8 @@
 
 [快速排序](pkg/sorter/quick)
 
-- 单路快排
-- 双路快排
+- [单路快排](pkg/sorter/quick/oneway.go)
+- [双路快排](pkg/sorter/quick/twoway.go)
 
 ## 树 tree
 
