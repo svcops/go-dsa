@@ -41,9 +41,9 @@
 
 ### 图中的算法
 
-[无向图求联通分量个数](pkg/graph/algo/components/components.go)
+[无向图求联通分量个数](pkg/graph/algo/components)
 
-[单源最短路径 dijkstra](pkg/graph/algo/dijkstra/dijkstra.go)
+[单源最短路径 dijkstra](pkg/graph/algo/dijkstra)
 
 [求图中的环](pkg/graph/algo/ring)
 
