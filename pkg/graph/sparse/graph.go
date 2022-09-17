@@ -37,7 +37,6 @@ func (sp *implGraph) IsDirect() bool {
 }
 
 func (sp *implGraph) EdgesNum() int {
-	// TODO implement me
 	size := 0
 	for _, es := range sp.g {
 		size += len(es)
