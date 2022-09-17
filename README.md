@@ -43,6 +43,10 @@
 
 [无向图求联通分量个数](pkg/graph/algo/components)
 
+[最小生成树 LazyPrim](pkg/graph/algo/mst/lazyprim/lazyprim.go)
+
+[最小生成树 Prim](pkg/graph/algo/mst/prim/prim.go)
+
 [单源最短路径 dijkstra](pkg/graph/algo/dijkstra)
 
 [求图中的环](pkg/graph/algo/ring)
@@ -53,3 +57,9 @@
 [深度遍历求两点之前的所有路径](pkg/graph/algo/dfs/dfs.go)
 
 ## 动态规划
+
+[one hundred](pkg/dp/hundred/solution.go)
+
+[kmp](pkg/dp/kmp/kmp.go)
+
+- todo : `createNext`

@@ -5,7 +5,7 @@ package kmp
 
 func firstAt(main, pattern []rune) int {
 	// 模式串next数组
-	patternNext := calNext(pattern)
+	patternNext := createNext(pattern)
 
 	// 主串和模式串的长度
 	mainLen, patternLen := len(main), len(pattern)
@@ -45,12 +45,12 @@ func firstAt(main, pattern []rune) int {
 }
 
 //
-// calNext
+// createNext
 //  @Description: 计算next数组
 //  @param pattern
 //  @return []int
 //
-func calNext(pattern []rune) []int {
+func createNext(pattern []rune) []int {
 	next := make([]int, len(pattern))
 
 	// todo
