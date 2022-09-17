@@ -13,7 +13,7 @@ type Edge struct {
 }
 
 func (e Edge) ToString() string {
-	return fmt.Sprintf("from : %s, to : %s ;weight : %g", e.From, e.To, e.Weight)
+	return fmt.Sprintf("from: %s , to: %s ;weight : %g", e.From, e.To, e.Weight)
 }
 
 //
