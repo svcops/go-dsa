@@ -4,6 +4,7 @@ package dfs
 
 import (
 	"fmt"
+	"go-ads/pkg/graph"
 	"golang.org/x/exp/maps"
 )
 
@@ -17,8 +18,8 @@ func (d *dfs) PrintRoutesByE(src, dest string) {
 
 		fmt.Print("路径为: ", src)
 		for _, edge := range route {
-			routeWeight += edge.weight
-			fmt.Printf(" -(%g)-> %s", edge.weight, edge.to)
+			routeWeight += edge.Weight
+			fmt.Printf(" -(%g)-> %s", edge.Weight, edge.To)
 		}
 		fmt.Println()
 		fmt.Println("路径的权重为:", routeWeight)
@@ -35,7 +36,7 @@ func (d *dfs) PrintRoutesByE(src, dest string) {
 //  @param dest
 //  @return [][]*Edge
 //
-func (d *dfs) FindRoutesByE(src, dest string) [][]*Edge {
+func (d *dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 	d.dest = dest
 
 	visited := make(map[string]bool)
@@ -45,7 +46,7 @@ func (d *dfs) FindRoutesByE(src, dest string) [][]*Edge {
 
 	srcRoutes := edgeRoutes{
 		from: src,
-		rts:  make([][]*Edge, 0),
+		rts:  make([][]*graph.Edge, 0),
 	}
 
 	d.dfsRecordE(src, visited, &srcRoutes)
@@ -65,7 +66,7 @@ func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes)
 	for other, weight := range d.g.Adj(v) {
 		if other == d.dest {
 			// 找到了最小的子路径 e.g. C-E
-			findRoute := []*Edge{{from: v, to: other, weight: weight}}
+			findRoute := []*graph.Edge{{From: v, To: other, Weight: weight}}
 			vRoutes.rts = append(vRoutes.rts, findRoute)
 
 			visited[other] = true
@@ -76,7 +77,7 @@ func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes)
 
 				subRoutes := edgeRoutes{
 					from: other,
-					rts:  make([][]*Edge, 0),
+					rts:  make([][]*graph.Edge, 0),
 				}
 
 				d.dfsRecordE(other, subVisited, &subRoutes)
@@ -86,11 +87,11 @@ func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes)
 					// 有子路径，合并每一条子路径
 					for _, subRoute := range subRoutes.rts {
 						// 路径合并
-						mergeRoute := make([]*Edge, 1+len(subRoute))
-						mergeRoute[0] = &Edge{
-							from:   v,
-							to:     other,
-							weight: weight,
+						mergeRoute := make([]*graph.Edge, 1+len(subRoute))
+						mergeRoute[0] = &graph.Edge{
+							From:   v,
+							To:     other,
+							Weight: weight,
 						}
 
 						for i, edge := range subRoute {
@@ -112,13 +113,5 @@ func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes)
 
 type edgeRoutes struct {
 	from string
-	rts  [][]*Edge
-}
-
-// Edge
-//  @Description: 定义边
-//
-type Edge struct {
-	from, to string
-	weight   float64
+	rts  [][]*graph.Edge
 }

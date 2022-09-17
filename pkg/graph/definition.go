@@ -1,5 +1,25 @@
 package graph
 
+import (
+	"fmt"
+)
+
+// Edge
+//  @Description: 定义边
+//
+type Edge struct {
+	From, To string
+	Weight   float64
+}
+
+func (e Edge) ToString() string {
+	return fmt.Sprintf("from : %s, to : %s ;weight : %g", e.From, e.To, e.Weight)
+}
+
+//
+// Graph
+//  @Description: 定义图的接口
+//
 type Graph interface {
 	//
 	// IsDirect
@@ -79,14 +99,7 @@ type Graph interface {
 	Show()
 }
 
-// type Set interface {
-// 	Size() int
-// 	IsEmpty() bool
-// 	Add(string)
-// 	Contains(string) bool
-// 	Delete(string)
-// }
-
+// Set 邻边迭代器使用
 type Set map[string]bool
 
 func CreateSet() Set {
@@ -114,4 +127,22 @@ func (s Set) Add(e string) {
 
 func (s Set) Delete(e string) {
 	delete(s, e)
+}
+
+//
+// GetRandomOne
+//  @Description: 随机拿一个
+//  @receiver s
+//
+func (s Set) GetRandomOne() (string, bool) {
+	if s.IsEmpty() {
+		return "", false
+	}
+
+	var v string
+	for tmpV := range s {
+		v = tmpV
+		break
+	}
+	return v, true
 }

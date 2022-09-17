@@ -31,6 +31,11 @@ func (h dtsMinHeap) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }
 
+// Push 绑定push方法，插入新元素
+func (h *dtsMinHeap) Push(x any) {
+	*h = append(*h, x.(distanceToSrc))
+}
+
 // Pop 绑定pop方法，从最后拿出一个元素并返回
 func (h *dtsMinHeap) Pop() any {
 	old := *h
@@ -38,9 +43,4 @@ func (h *dtsMinHeap) Pop() any {
 	x := old[n-1]
 	*h = old[0 : n-1]
 	return x
-}
-
-// Push 绑定push方法，插入新元素
-func (h *dtsMinHeap) Push(x any) {
-	*h = append(*h, x.(distanceToSrc))
 }
