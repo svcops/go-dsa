@@ -1,3 +1,6 @@
+// Package dfs
+// @Description: 无向图测试
+
 package dfs
 
 import (
@@ -16,7 +19,7 @@ const (
 //  @Description: 两条路径测试
 //  @param t
 //
-func TestFindRoutes1(t *testing.T) {
+func TestUndirectedFindRoutes1(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, true)
 
 	g.Connect(a, b, 1)
@@ -50,7 +53,7 @@ func TestFindRoutes1(t *testing.T) {
 //  @Description: 多条路径测试
 //  @param t
 //
-func TestFindRoutes2(t *testing.T) {
+func TestUndirectedFindRoutes2(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, true)
 	// g := dense.CreateDenseGraph(10, false, true)
 
