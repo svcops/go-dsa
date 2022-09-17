@@ -1,5 +1,5 @@
 // Package dfs
-// @Description: 无向图测试
+// @Description: 有向图测试
 
 package dfs
 
