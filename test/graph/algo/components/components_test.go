@@ -22,7 +22,7 @@ func TestTraverse(t *testing.T) {
 	t.Log("component size", compAlgo.ComponentSize())
 
 	t.Log("has path ", compAlgo.HasPath("A", "B"))
-	t.Log("has path ", compAlgo.HasPath("A,", "C"))
+	t.Log("has path ", compAlgo.HasPath("A", "C"))
 
 	t.Log("has path ", compAlgo.HasPath("AA", "BB"))
 	t.Log("has path ", compAlgo.HasPath("AA", "CC"))
