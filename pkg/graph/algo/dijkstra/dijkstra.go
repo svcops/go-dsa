@@ -28,11 +28,11 @@ func CreateDijkstraAlgo(g graph.Graph) *dijkstra {
 	}
 }
 
-//
 // init
-//  @Description:  初始化辅助的数据结构
-//  @receiver d
 //
+//	@Description: 初始化辅助的数据结构
+//	@receiver d
+//	@param source
 func (d *dijkstra) init(source string) {
 	// 标记源头
 	marked := make(map[string]bool)
