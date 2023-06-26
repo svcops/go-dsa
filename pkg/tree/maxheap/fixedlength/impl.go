@@ -34,22 +34,22 @@ func (h *heap) Add(value float64) (bool, error) {
 	}
 	h.size++
 	h.values[h.size] = value
-	h.shiftUpByLoop(h.size)
+	h.siftUpByLoop(h.size)
 	return true, nil
 }
 
-func (h *heap) shiftUp(cur int) {
+func (h *heap) siftUp(cur int) {
 	if cur == 1 {
 		return
 	}
 	parent := cur / 2
 	if h.values[cur] > h.values[parent] {
 		swap(h.values, cur, parent)
-		h.shiftUp(parent)
+		h.siftUp(parent)
 	}
 }
 
-func (h *heap) shiftUpByLoop(cur int) {
+func (h *heap) siftUpByLoop(cur int) {
 	i, pi := cur, cur/2
 	for i >= 2 && h.values[i] > h.values[pi] {
 		swap(h.values, i, pi)
@@ -78,11 +78,11 @@ func (h *heap) ExtractMax() (float64, error) {
 	swap(h.values, 1, h.size)
 	// 先减少size
 	h.size--
-	h.shiftDownLoop(1)
+	h.siftDownLoop(1)
 	return max, nil
 }
 
-func (h *heap) shiftDown(cur int) {
+func (h *heap) siftDown(cur int) {
 	left, right := cur*2, cur*2+1
 	if left <= h.size || right <= h.size {
 		// if left == h.size {
@@ -101,7 +101,7 @@ func (h *heap) shiftDown(cur int) {
 		// 	}
 		// 	if h.values[subMax] > h.values[cur] {
 		// 		swap(h.values, cur, subMax)
-		// 		h.shiftDown(subMax)
+		// 		h.siftDownsiftDown(subMax)
 		// 	}
 		// }
 		var choose int
@@ -117,12 +117,12 @@ func (h *heap) shiftDown(cur int) {
 
 		if h.values[choose] > h.values[cur] {
 			swap(h.values, cur, choose)
-			h.shiftDown(choose)
+			h.siftDown(choose)
 		}
 	}
 }
 
-func (h *heap) shiftDownLoop(cur int) {
+func (h *heap) siftDownLoop(cur int) {
 	p, left, right := cur, cur*2, cur*2+1
 	for left <= h.size || right <= h.size {
 		if left == h.size {
