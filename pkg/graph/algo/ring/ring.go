@@ -34,12 +34,11 @@ func (r *ring) Calculate() {
 	}
 }
 
-//
 // HasRing
-//  @Description: 是否有环
-//  @receiver r
-//  @return bool
 //
+//	@Description: 是否有环
+//	@receiver r
+//	@return bool
 func (r *ring) HasRing() bool {
 	return r.hasRing
 }

@@ -10,11 +10,10 @@ import (
 	"testing"
 )
 
-//
 // TestFindRoutes1
-//  @Description: 两条路径测试
-//  @param t
 //
+//	@Description: 两条路径测试
+//	@param t
 func TestDirectedFindRoute(t *testing.T) {
 	g := sparse.CreateSparseGraph(true, true)
 

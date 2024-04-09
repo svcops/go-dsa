@@ -28,14 +28,13 @@ func (d *dfs) PrintRoutesByE(src, dest string) {
 
 }
 
-//
 // FindRoutesByE
-//  @Description: 返回所有路径
-//  @receiver d
-//  @param src
-//  @param dest
-//  @return [][]*Edge
 //
+//	@Description: 返回所有路径
+//	@receiver d
+//	@param src
+//	@param dest
+//	@return [][]*Edge
 func (d *dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 	d.dest = dest
 
@@ -53,14 +52,13 @@ func (d *dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 	return srcRoutes.rts
 }
 
-//
 // dfsRecordE
-//  @Description: dfs 遍历寻找所有路径
-//  @receiver d
-//  @param v
-//  @param visited
-//  @param vRoutes 节点v的所有子路径集合
 //
+//	@Description: dfs 遍历寻找所有路径
+//	@receiver d
+//	@param v
+//	@param visited
+//	@param vRoutes 节点v的所有子路径集合
 func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes) {
 	visited[v] = true
 	for other, weight := range d.g.Adj(v) {

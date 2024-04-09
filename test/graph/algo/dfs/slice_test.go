@@ -5,11 +5,10 @@ package dfs
 
 import "testing"
 
-//
 // TestAppendFailure
-//  @Description:
-//  @param t
 //
+//	@Description:
+//	@param t
 func TestAppendFailure(t *testing.T) {
 	ta := testAppend{
 		flag:   false,
@@ -22,11 +21,10 @@ func TestAppendFailure(t *testing.T) {
 	// hello
 }
 
-//
 // TestAppendSuccess
-//  @Description:
-//  @param t
 //
+//	@Description:
+//	@param t
 func TestAppendSuccess(t *testing.T) {
 	ta := testAppend{
 		values: []string{"hello"},
@@ -37,21 +35,19 @@ func TestAppendSuccess(t *testing.T) {
 	// hello world
 }
 
-//
 // appendFailure
-//  @Description: 传值不能修改结构体的内容
-//  @param ta
 //
+//	@Description: 传值不能修改结构体的内容
+//	@param ta
 func appendFailure(ta testAppend) {
 	ta.flag = true
 	ta.values = append(ta.values, "world")
 }
 
-//
 // appendSuccess
-//  @Description: 传指针可以修改结构体的内容
-//  @param ta
 //
+//	@Description: 传指针可以修改结构体的内容
+//	@param ta
 func appendSuccess(ta *testAppend) {
 	ta.flag = true
 	ta.values = append(ta.values, "world")

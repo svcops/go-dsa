@@ -8,10 +8,8 @@ import (
 	"go-ads/pkg/tree/bst"
 )
 
-//
-//  avlTree
-//  @Description: debug 辅助打印中间过程
-//
+// avlTree
+// @Description: debug 辅助打印中间过程
 type avlTree struct {
 	size  *int
 	root  *avlNode

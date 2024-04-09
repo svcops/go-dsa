@@ -5,12 +5,11 @@ package hundred
 
 const unused = true
 
-//
 // CombinationNum
-//  @Description: 获取组合的个数
-//  @param i
-//  @return int
 //
+//	@Description: 获取组合的个数
+//	@param i
+//	@return int
 func CombinationNum(i int) int {
 	if i <= 0 {
 		return 0
@@ -19,12 +18,11 @@ func CombinationNum(i int) int {
 	return len(com.nc)
 }
 
-//
 // getCom
-//  @Description: getCombination 或者组合个数
-//  @param i
-//  @return combination
 //
+//	@Description: getCombination 或者组合个数
+//	@param i
+//	@return combination
 func getCom(i int, cache map[int]*combination) *combination {
 	if i == 1 {
 		cn1cache, ok := cache[1]
@@ -146,14 +144,11 @@ func distinct(total int, a, b *combination) *combination {
 	}
 }
 
-//
-//
-//  @Description: merge ,利用set的特性
-//  @param total
-//  @param a
-//  @param b
-//  @return combination
-//
+// @Description: merge ,利用set的特性
+// @param total
+// @param a
+// @param b
+// @return combination
 func merge(total int, a, b *combination) *combination {
 	resMap := make(map[int]bool)
 	aNc, bNc := a.nc, b.nc
@@ -168,11 +163,9 @@ func merge(total int, a, b *combination) *combination {
 	}
 }
 
-//
-//  combination
-//  @Description: nc : 组合个数 当set使用
-//  @Description: nc : number of combinations
-//
+// combination
+// @Description: nc : 组合个数 当set使用
+// @Description: nc : number of combinations
 type combination struct {
 	total int
 	nc    map[int]bool

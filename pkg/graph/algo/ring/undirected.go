@@ -27,14 +27,13 @@ func (ur *undirectedRing) calculate() {
 	}
 }
 
-//
 // dfsDirected
-//  @Description:
-//  @receiver urk
-//  @param v
-//  @param from 深度遍历的时候，记录从哪个节点(or边)过来的
-//  @return bool
 //
+//	@Description:
+//	@receiver urk
+//	@param v
+//	@param from 深度遍历的时候，记录从哪个节点(or边)过来的
+//	@return bool
 func (ur *undirectedRing) dfsDirected(v string, from string) {
 	ur.visited[v] = true
 	if ur.debug {

@@ -5,10 +5,8 @@ import (
 	"go-ads/pkg/graph"
 )
 
-//
-//  implGraph
-//  @Description: 稀疏图的实现
-//
+// implGraph
+// @Description: 稀疏图的实现
 type implGraph struct {
 	direct    bool
 	g         map[string]map[string]float64
@@ -16,13 +14,12 @@ type implGraph struct {
 	allVertex graph.Set
 }
 
-//
 // CreateSparseGraph
-//  @Description:
-//  @param direct
-//  @param cover 添加了重复的边，是否选择覆盖
-//  @return *implGraph
 //
+//	@Description:
+//	@param direct
+//	@param cover 添加了重复的边，是否选择覆盖
+//	@return *implGraph
 func CreateSparseGraph(direct, cover bool) *implGraph {
 	return &implGraph{
 		direct:    direct,

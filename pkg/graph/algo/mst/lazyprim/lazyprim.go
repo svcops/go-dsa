@@ -64,11 +64,10 @@ func (lp *lazyPrim) visit(from string) {
 	}
 }
 
-//
 // init
-//  @Description: 初始化
-//  @receiver lp
 //
+//	@Description: 初始化
+//	@receiver lp
 func (lp *lazyPrim) init() {
 	visited := make(map[string]bool)
 	for v := range lp.g.Vertices() {

@@ -7,10 +7,8 @@ import (
 	"go-ads/pkg/tree/bst"
 )
 
-//
-//  avlNode
-//  @Description: avl 树的节点
-//
+// avlNode
+// @Description: avl 树的节点
 type avlNode struct {
 	k      int
 	v      string

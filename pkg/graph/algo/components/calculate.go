@@ -5,7 +5,7 @@ import "fmt"
 func (tr *components) init() {
 	visited := make(map[string]bool)
 	vs := tr.g.Vertices()
-	for v, _ := range vs {
+	for v := range vs {
 		visited[v] = false
 	}
 
@@ -14,11 +14,10 @@ func (tr *components) init() {
 	tr.groupNum, tr.visited, tr.uf = 0, visited, uf
 }
 
-//
 // Calculate
-//  @Description: 遍历
-//  @receiver tr
 //
+//	@Description: 遍历
+//	@receiver tr
 func (tr *components) Calculate() {
 	if tr.g.IsDirect() {
 		fmt.Println("有向图暂时不做遍历")
@@ -38,19 +37,18 @@ func (tr *components) Calculate() {
 	}
 }
 
-//
 // deep
-//  @Description: 深度遍历
-//  @receiver tr
-//  @param v
 //
+//	@Description: 深度遍历
+//	@receiver tr
+//	@param v
 func (tr *components) deep(v string) {
 	tr.visited[v] = true
 
 	tr.uf[v] = tr.groupNum
 
 	adj := tr.g.Adj(v)
-	for to, _ := range adj {
+	for to := range adj {
 		if !tr.visited[to] {
 			tr.deep(to)
 		}

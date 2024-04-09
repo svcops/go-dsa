@@ -44,12 +44,11 @@ func firstAt(main, pattern []rune) int {
 	}
 }
 
-//
 // createNext
-//  @Description: 计算next数组
-//  @param pattern
-//  @return []int
 //
+//	@Description: 计算next数组
+//	@param pattern
+//	@return []int
 func createNext(pattern []rune) []int {
 	next := make([]int, len(pattern))
 

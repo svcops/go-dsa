@@ -1,10 +1,8 @@
 package dijkstra
 
-//
-//  distanceToSrc
-//  @Description: 临时的数据结构，临时记录点到源的最小距离
-//  @Description: 放到最小堆里，贪心的思想
-//
+// distanceToSrc
+// @Description: 临时的数据结构，临时记录点到源的最小距离
+// @Description: 放到最小堆里，贪心的思想
 type distanceToSrc struct {
 	vertex   string
 	distance float64

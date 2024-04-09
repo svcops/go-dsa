@@ -14,11 +14,10 @@ const (
 	a, b, c, d, e, f = "A", "B", "C", "D", "E", "F"
 )
 
-//
 // TestFindRoutes1
-//  @Description: 两条路径测试
-//  @param t
 //
+//	@Description: 两条路径测试
+//	@param t
 func TestUndirectedFindRoutes1(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, true)
 
@@ -48,11 +47,10 @@ func TestUndirectedFindRoutes1(t *testing.T) {
 	algo.PrintRoutesByE(src, dest)
 }
 
-//
 // TestFindRoutes2
-//  @Description: 多条路径测试
-//  @param t
 //
+//	@Description: 多条路径测试
+//	@param t
 func TestUndirectedFindRoutes2(t *testing.T) {
 	g := sparse.CreateSparseGraph(false, true)
 	// g := dense.CreateDenseGraph(10, false, true)

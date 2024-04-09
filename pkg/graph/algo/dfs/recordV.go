@@ -21,11 +21,10 @@ func (d *dfs) PrintRoutesByV(src, dest string) {
 	}
 }
 
-//
 // FindRoutesByV
-//  @Description: 求两点的所有路径
-//  @receiver d
 //
+//	@Description: 求两点的所有路径
+//	@receiver d
 func (d *dfs) FindRoutesByV(src, dest string) [][]string {
 
 	d.dest = dest
@@ -96,10 +95,8 @@ func (d *dfs) dfsRecordV(v string, visited map[string]bool, vRoutes *vertexRoute
 
 }
 
-//
-//  vertexRoutes
-//  @Description: 顶点的路径
-//
+// vertexRoutes
+// @Description: 顶点的路径
 type vertexRoutes struct {
 	from string
 	rts  [][]string

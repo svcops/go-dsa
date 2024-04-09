@@ -7,10 +7,8 @@ import (
 	"go-ads/pkg/graph"
 )
 
-//
-//  implGraph
-//  @Description: vertexCap 节点容量
-//
+// implGraph
+// @Description: vertexCap 节点容量
 type implGraph struct {
 	direct    bool
 	g         [][]float64
@@ -24,12 +22,12 @@ type implGraph struct {
 }
 
 // CreateDenseGraph
-//  @Description:
-//  @param vertexNum 顶点个数，和稀疏图不同
-//  @param direct
-//  @param cover  添加了重复的边，是否选择覆盖
-//  @return *implGraph
 //
+//	@Description:
+//	@param vertexNum 顶点个数，和稀疏图不同
+//	@param direct
+//	@param cover  添加了重复的边，是否选择覆盖
+//	@return *implGraph
 func CreateDenseGraph(vertexCap int, direct, cover bool) *implGraph {
 	// 初始化二维矩阵
 	g := make([][]float64, vertexCap)
@@ -58,12 +56,11 @@ func (de *implGraph) EdgesNum() int {
 	return de.edgesNum
 }
 
-//
 // VerticesNum
-//  @Description: 返回初始化了的节点的个数
-//  @receiver de
-//  @return int
 //
+//	@Description: 返回初始化了的节点的个数
+//	@receiver de
+//	@return int
 func (de *implGraph) VerticesNum() int {
 	// return de.vertexCap
 	// return len(de.strToI)
