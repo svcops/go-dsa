@@ -8,13 +8,13 @@ import (
 	"go-ads/pkg/graph"
 )
 
-type dfs struct {
+type Dfs struct {
 	g    graph.Graph
 	dest string
 }
 
-func CreateDfsAlgo(g graph.Graph) *dfs {
-	return &dfs{
+func CreateDfsAlgo(g graph.Graph) *Dfs {
+	return &Dfs{
 		g: g,
 	}
 }

@@ -8,7 +8,7 @@ import (
 	"golang.org/x/exp/maps"
 )
 
-func (d *dfs) PrintRoutesByE(src, dest string) {
+func (d *Dfs) PrintRoutesByE(src, dest string) {
 	routes := d.FindRoutesByE(src, dest)
 
 	fmt.Printf("从 %s 到 %s 共有 %d 条路径\n", src, dest, len(routes))
@@ -35,7 +35,7 @@ func (d *dfs) PrintRoutesByE(src, dest string) {
 //	@param src
 //	@param dest
 //	@return [][]*Edge
-func (d *dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
+func (d *Dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 	d.dest = dest
 
 	visited := make(map[string]bool)
@@ -59,7 +59,7 @@ func (d *dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 //	@param v
 //	@param visited
 //	@param vRoutes 节点v的所有子路径集合
-func (d *dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes) {
+func (d *Dfs) dfsRecordE(v string, visited map[string]bool, vRoutes *edgeRoutes) {
 	visited[v] = true
 	for other, weight := range d.g.Adj(v) {
 		if other == d.dest {

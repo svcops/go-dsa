@@ -8,7 +8,7 @@ import (
 	"golang.org/x/exp/maps"
 )
 
-func (d *dfs) PrintRoutesByV(src, dest string) {
+func (d *Dfs) PrintRoutesByV(src, dest string) {
 	routes := d.FindRoutesByV(src, dest)
 
 	fmt.Printf("从 %s 到 %s 共有 %d 条路径\n", src, dest, len(routes))
@@ -25,7 +25,7 @@ func (d *dfs) PrintRoutesByV(src, dest string) {
 //
 //	@Description: 求两点的所有路径
 //	@receiver d
-func (d *dfs) FindRoutesByV(src, dest string) [][]string {
+func (d *Dfs) FindRoutesByV(src, dest string) [][]string {
 
 	d.dest = dest
 
@@ -44,7 +44,7 @@ func (d *dfs) FindRoutesByV(src, dest string) [][]string {
 	return route.rts
 }
 
-func (d *dfs) dfsRecordV(v string, visited map[string]bool, vRoutes *vertexRoutes) {
+func (d *Dfs) dfsRecordV(v string, visited map[string]bool, vRoutes *vertexRoutes) {
 	visited[v] = true
 
 	for other := range d.g.Adj(v) {
