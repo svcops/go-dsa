@@ -3,7 +3,7 @@ package intheap
 import (
 	"container/heap"
 	"fmt"
-	intMinHeap "go-ads/pkg/graph/algo/intheap"
+	intMinHeap "go-dsa/pkg/graph/algo/intheap"
 	"testing"
 )
 

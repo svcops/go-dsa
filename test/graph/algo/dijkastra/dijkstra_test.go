@@ -1,8 +1,8 @@
 package dijkastra
 
 import (
-	"go-ads/pkg/graph/algo/dijkstra"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph/algo/dijkstra"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

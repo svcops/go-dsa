@@ -1,6 +1,6 @@
 package bubble
 
-import "go-ads/pkg/sorter"
+import "go-dsa/pkg/sorter"
 
 func Sort[T sorter.Iterm](arr []T) {
 	if arr == nil || len(arr) <= 1 {

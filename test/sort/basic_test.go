@@ -1,7 +1,7 @@
 package sort
 
 import (
-	"go-ads/pkg/sorter"
+	"go-dsa/pkg/sorter"
 	"testing"
 )
 

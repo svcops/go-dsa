@@ -5,7 +5,7 @@ package avl
 
 import (
 	"fmt"
-	"go-ads/pkg/tree/bst"
+	"go-dsa/pkg/tree/bst"
 )
 
 // avlTree

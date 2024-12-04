@@ -5,8 +5,8 @@ package dfs
 
 import (
 	"fmt"
-	"go-ads/pkg/graph/algo/dfs"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph/algo/dfs"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

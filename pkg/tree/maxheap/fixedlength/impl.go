@@ -2,7 +2,7 @@ package fixed
 
 import (
 	"fmt"
-	"go-ads/pkg/tree/maxheap"
+	"go-dsa/pkg/tree/maxheap"
 )
 
 type heap struct {

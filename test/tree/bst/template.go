@@ -4,7 +4,7 @@
 package bst
 
 import (
-	"go-ads/pkg/tree/bst"
+	"go-dsa/pkg/tree/bst"
 	"math/rand"
 	"strconv"
 	"testing"

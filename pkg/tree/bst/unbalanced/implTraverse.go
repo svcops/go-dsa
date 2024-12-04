@@ -1,6 +1,6 @@
 package unbalanced
 
-import "go-ads/pkg/tree/bst"
+import "go-dsa/pkg/tree/bst"
 
 // Dfs 深度遍历
 func (tree *unbalancedBST) Dfs(ac bst.Action) {

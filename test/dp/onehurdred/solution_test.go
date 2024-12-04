@@ -1,7 +1,7 @@
 package onehurdred
 
 import (
-	"go-ads/pkg/dp/hundred"
+	"go-dsa/pkg/dp/hundred"
 	"testing"
 )
 

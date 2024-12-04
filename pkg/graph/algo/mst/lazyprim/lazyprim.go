@@ -2,7 +2,7 @@ package lazyprim
 
 import (
 	"container/heap"
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 type lazyPrim struct {

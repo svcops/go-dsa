@@ -2,7 +2,7 @@ package unbalanced
 
 import (
 	"fmt"
-	"go-ads/pkg/tree/bst"
+	"go-dsa/pkg/tree/bst"
 )
 
 const empty = ""

@@ -1,10 +1,10 @@
 package sort
 
 import (
-	"go-ads/pkg/sorter"
-	"go-ads/pkg/sorter/bubble"
-	"go-ads/pkg/sorter/insert"
-	"go-ads/pkg/sorter/quick"
+	"go-dsa/pkg/sorter"
+	"go-dsa/pkg/sorter/bubble"
+	"go-dsa/pkg/sorter/insert"
+	"go-dsa/pkg/sorter/quick"
 	"testing"
 )
 

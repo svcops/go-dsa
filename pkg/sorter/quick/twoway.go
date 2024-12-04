@@ -1,7 +1,7 @@
 package quick
 
 import (
-	"go-ads/pkg/sorter"
+	"go-dsa/pkg/sorter"
 )
 
 func SortTwoWay[T sorter.Iterm](arr []T) {

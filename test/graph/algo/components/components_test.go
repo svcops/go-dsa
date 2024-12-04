@@ -1,8 +1,8 @@
 package components
 
 import (
-	"go-ads/pkg/graph/algo/components"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph/algo/components"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

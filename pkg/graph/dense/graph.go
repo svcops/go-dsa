@@ -4,7 +4,7 @@ package dense
 
 import (
 	"fmt"
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 // implGraph

@@ -1,6 +1,6 @@
 package mst
 
-import "go-ads/pkg/graph"
+import "go-dsa/pkg/graph"
 
 type MST interface {
 	Calculate() []graph.Edge

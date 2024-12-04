@@ -1,7 +1,7 @@
 package graph
 
 import (
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 	"reflect"
 	"testing"
 )

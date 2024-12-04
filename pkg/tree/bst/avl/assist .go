@@ -4,7 +4,7 @@
 package avl
 
 import (
-	"go-ads/pkg/tree/bst"
+	"go-dsa/pkg/tree/bst"
 )
 
 // avlNode

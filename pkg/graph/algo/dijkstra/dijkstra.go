@@ -5,7 +5,7 @@ package dijkstra
 
 import (
 	"container/heap"
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 type dijkstra struct {

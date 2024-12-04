@@ -5,7 +5,7 @@
 package dfs
 
 import (
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 type Dfs struct {

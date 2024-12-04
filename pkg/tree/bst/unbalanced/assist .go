@@ -4,7 +4,7 @@
 package unbalanced
 
 import (
-	"go-ads/pkg/tree/bst"
+	"go-dsa/pkg/tree/bst"
 	"log"
 )
 

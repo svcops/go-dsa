@@ -2,7 +2,7 @@
 // @Description: 判断无向图是否有环
 package ring
 
-import "go-ads/pkg/graph"
+import "go-dsa/pkg/graph"
 
 type ring struct {
 	g       graph.Graph

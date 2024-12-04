@@ -1,9 +1,9 @@
 package graph
 
 import (
-	"go-ads/pkg/graph"
-	"go-ads/pkg/graph/dense"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph"
+	"go-dsa/pkg/graph/dense"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

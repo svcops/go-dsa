@@ -1,8 +1,8 @@
 package lazyprim
 
 import (
-	"go-ads/pkg/graph/algo/mst/lazyprim"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph/algo/mst/lazyprim"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

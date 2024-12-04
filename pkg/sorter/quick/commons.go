@@ -1,6 +1,6 @@
 package quick
 
-import "go-ads/pkg/sorter"
+import "go-dsa/pkg/sorter"
 
 // sortOneWay [l ... r] 闭区间
 func quickSort[T sorter.Iterm](arr []T, l, r int,

@@ -1,7 +1,7 @@
 package maxheap
 
 import (
-	fixed "go-ads/pkg/tree/maxheap/fixedlength"
+	fixed "go-dsa/pkg/tree/maxheap/fixedlength"
 	"math/rand"
 	"testing"
 )

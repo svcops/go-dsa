@@ -1,7 +1,7 @@
 package lazyprim
 
 import (
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 type edgeMinHeap []graph.Edge

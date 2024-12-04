@@ -1,8 +1,8 @@
 package ring
 
 import (
-	"go-ads/pkg/graph/algo/ring"
-	"go-ads/pkg/graph/sparse"
+	"go-dsa/pkg/graph/algo/ring"
+	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
 

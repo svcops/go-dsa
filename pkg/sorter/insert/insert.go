@@ -4,7 +4,7 @@
 package insert
 
 import (
-	"go-ads/pkg/sorter"
+	"go-dsa/pkg/sorter"
 )
 
 // Sort1 插入排序的第一种实现

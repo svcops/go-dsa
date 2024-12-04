@@ -2,7 +2,7 @@ package components
 
 import (
 	"fmt"
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 )
 
 // components

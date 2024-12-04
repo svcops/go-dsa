@@ -4,7 +4,7 @@ package dfs
 
 import (
 	"fmt"
-	"go-ads/pkg/graph"
+	"go-dsa/pkg/graph"
 	"golang.org/x/exp/maps"
 )
 
