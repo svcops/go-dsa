@@ -1,9 +1,9 @@
 package avl
 
 import (
-	template "go-ads/test/tree/bst"
 	"go-dsa/pkg/tree/bst"
 	"go-dsa/pkg/tree/bst/avl"
+	template "go-dsa/test/tree/bst"
 	"testing"
 )
 

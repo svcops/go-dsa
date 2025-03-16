@@ -1,9 +1,9 @@
 package unbalanced
 
 import (
-	template "go-ads/test/tree/bst"
 	"go-dsa/pkg/tree/bst"
 	"go-dsa/pkg/tree/bst/unbalanced"
+	template "go-dsa/test/tree/bst"
 	"testing"
 )
 
