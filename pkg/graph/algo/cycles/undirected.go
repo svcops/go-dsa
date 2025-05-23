@@ -1,13 +1,13 @@
 // Package cycles
 // @Description: 无向图判断环
-package ring
+package cycles
 
 import (
 	"log"
 )
 
 type undirectedRing struct {
-	*ring
+	*cycles
 	visited map[string]bool
 }
 

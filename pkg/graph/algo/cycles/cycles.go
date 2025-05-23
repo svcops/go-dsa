@@ -1,34 +1,34 @@
 // Package cycles
 // @Description: 判断无向图是否有环
-package ring
+package cycles
 
 import "go-dsa/pkg/graph"
 
-type ring struct {
+type cycles struct {
 	g       graph.Graph
 	hasRing bool
 	debug   bool
 }
 
-func CreateRingAlgo(g graph.Graph) *ring {
-	return &ring{
+func CreateCyclesAlgo(g graph.Graph) *cycles {
+	return &cycles{
 		g:     g,
 		debug: false,
 	}
 }
 
-func (r *ring) Calculate() {
+func (r *cycles) Calculate() {
 	r.hasRing = false
 
 	direct := r.g.IsDirect()
 	if direct {
 		dr := &directedRing{
-			ring: r,
+			cycles: r,
 		}
 		dr.calculate()
 	} else {
 		dr := &undirectedRing{
-			ring: r,
+			cycles: r,
 		}
 		dr.calculate()
 	}
@@ -39,10 +39,10 @@ func (r *ring) Calculate() {
 //	@Description: 是否有环
 //	@receiver r
 //	@return bool
-func (r *ring) HasRing() bool {
+func (r *cycles) HasRing() bool {
 	return r.hasRing
 }
 
-func (r *ring) SetDebug(debug bool) {
+func (r *cycles) SetDebug(debug bool) {
 	r.debug = debug
 }

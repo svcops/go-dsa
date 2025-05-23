@@ -1,13 +1,13 @@
 // Package cycles
 // @Description: 有向图判断环
-package ring
+package cycles
 
 import (
 	"log"
 )
 
 type directedRing struct {
-	*ring
+	*cycles
 	// 求环的时候整个图的状态
 	visited map[string]bool
 }

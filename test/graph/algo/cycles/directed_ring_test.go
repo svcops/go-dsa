@@ -17,7 +17,7 @@ func Test_Ring1(t *testing.T) {
 	g.Connect("C", "D", 1)
 	// A -> B -> C -> D
 
-	algo := ring.CreateRingAlgo(g)
+	algo := cycles.CreateCyclesAlgo(g)
 	algo.Calculate()
 	t.Log("第一次计算是否有环", algo.HasRing())
 
@@ -48,7 +48,7 @@ func Test_Ring2(t *testing.T) {
 	// A -> B -> C -> D
 	//         ↗
 	//        E
-	algo := ring.CreateRingAlgo(g)
+	algo := cycles.CreateCyclesAlgo(g)
 	algo.SetDebug(true)
 	algo.Calculate()
 	t.Log("计算是否有环", algo.HasRing())

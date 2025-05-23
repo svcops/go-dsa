@@ -23,7 +23,7 @@ func Test_Ring3(t *testing.T) {
 
 	// g.Show()
 
-	algo := ring.CreateRingAlgo(g)
+	algo := cycles.CreateCyclesAlgo(g)
 
 	algo.SetDebug(true)
 
@@ -53,7 +53,7 @@ func Test_Ring4(t *testing.T) {
 	//     |
 	//     E
 
-	algo := ring.CreateRingAlgo(g)
+	algo := cycles.CreateCyclesAlgo(g)
 
 	algo.SetDebug(true)
 
