@@ -1,4 +1,4 @@
-// Package ring
+// Package cycles
 // @Description: 无向图判断环
 package ring
 

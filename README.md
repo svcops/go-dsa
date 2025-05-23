@@ -61,8 +61,8 @@
 
 [求图中的环](pkg/graph/algo/ring)
 
-- [有向图求环](pkg/graph/algo/ring/directed.go)
-- [无向图求环](pkg/graph/algo/ring/undirected.go)
+- [有向图求环](pkg/graph/algo/cycles/directed.go)
+- [无向图求环](pkg/graph/algo/cycles/undirected.go)
 
 [深度遍历求两点之前的所有路径](pkg/graph/algo/dfs/dfs.go)
 

@@ -1,7 +1,7 @@
-package ring
+package cycles
 
 import (
-	"go-dsa/pkg/graph/algo/ring"
+	"go-dsa/pkg/graph/algo/cycles"
 	"go-dsa/pkg/graph/sparse"
 	"testing"
 )
