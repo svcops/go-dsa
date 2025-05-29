@@ -154,6 +154,7 @@ func printCycle(direct bool, cycle []string) {
 	if len(cycle) == 2 {
 		fmt.Println(lineStart + cycle[0] + " <=> " + cycle[1])
 		fmt.Println()
+		return
 	}
 	isEven := len(cycle)%2 == 0
 	var mid int
@@ -173,7 +174,7 @@ func printCycle(direct bool, cycle []string) {
 			if direct {
 				upperLine += v + " -> "
 			} else {
-				upperLine += v + " -- "
+				upperLine += v + " - "
 			}
 		}
 	}
@@ -190,7 +191,11 @@ func printCycle(direct bool, cycle []string) {
 		}
 	} else {
 		midStart = lineStart + "|"
-		midEnd = "|"
+		if isEven {
+			midEnd = "|"
+		} else {
+			midEnd = "/"
+		}
 	}
 	midLine := midStart
 	var sub int
@@ -220,7 +225,7 @@ func printCycle(direct bool, cycle []string) {
 			if direct {
 				downLine += v + " <- "
 			} else {
-				downLine += v + " -- "
+				downLine += v + " - "
 			}
 		}
 	}
