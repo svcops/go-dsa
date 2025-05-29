@@ -24,7 +24,7 @@ func (lp *lazyPrim) Calculate() []graph.Edge {
 		return make([]graph.Edge, 0)
 	}
 
-	one, ok := lp.g.Vertices().GetRandomOne()
+	one, ok := lp.g.Vertexes().GetRandomOne()
 	if !ok {
 		// 没有顶点
 		return make([]graph.Edge, 0)
@@ -32,7 +32,7 @@ func (lp *lazyPrim) Calculate() []graph.Edge {
 
 	lp.init()
 	lp.visit(one)
-	minSpanTree, index := make([]graph.Edge, len(lp.g.Vertices())-1), 0
+	minSpanTree, index := make([]graph.Edge, len(lp.g.Vertexes())-1), 0
 
 	// 最小堆中的元素不为空
 	for len(*lp.emh) > 0 {
@@ -70,7 +70,7 @@ func (lp *lazyPrim) visit(from string) {
 //	@receiver lp
 func (lp *lazyPrim) init() {
 	visited := make(map[string]bool)
-	for v := range lp.g.Vertices() {
+	for v := range lp.g.Vertexes() {
 		visited[v] = false
 	}
 	lp.marked = visited

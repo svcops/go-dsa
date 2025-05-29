@@ -39,7 +39,7 @@ func (d *Dfs) FindRoutesByE(src, dest string) [][]*graph.Edge {
 	d.dest = dest
 
 	visited := make(map[string]bool)
-	for v := range d.g.Vertices() {
+	for v := range d.g.Vertexes() {
 		visited[v] = false
 	}
 

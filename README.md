@@ -1,18 +1,6 @@
 # Go语言 数据结构与算法
 
-<!-- TOC -->
-* [Go语言 数据结构与算法](#go语言-数据结构与算法)
-  * [排序 sorter](#排序-sorter)
-  * [树 tree](#树-tree)
-    * [二分搜索树](#二分搜索树)
-    * [堆](#堆)
-  * [图 graph](#图-graph)
-    * [图的定义](#图的定义)
-    * [图中的算法](#图中的算法)
-  * [动态规划](#动态规划)
-<!-- TOC -->
-
-## 排序 sorter
+## 排序
 
 [冒泡排序](pkg/sorter/bubble)
 
@@ -23,7 +11,7 @@
 - [单路快排](pkg/sorter/quick/oneway.go)
 - [双路快排](pkg/sorter/quick/twoway.go)
 
-## 树 tree
+## 查找
 
 ### 二分搜索树
 
@@ -39,7 +27,7 @@
 
 [定长最大堆的实现](pkg/tree/maxheap/fixedlength/impl.go)
 
-## 图 graph
+## 图
 
 ### 图的定义
 
@@ -58,6 +46,8 @@
 [最小生成树 Prim](pkg/graph/algo/mst/prim/prim.go)
 
 [单源最短路径 dijkstra](pkg/graph/algo/dijkstra)
+
+[环分析](pkg/graph/algo/cycles/cycleAnalyzer.go)
 
 [求图中的环](pkg/graph/algo/ring)
 

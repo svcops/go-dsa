@@ -36,7 +36,7 @@ func CreateDijkstraAlgo(g graph.Graph) *dijkstra {
 func (d *dijkstra) init(source string) {
 	// 标记源头
 	marked := make(map[string]bool)
-	for v := range d.g.Vertices() {
+	for v := range d.g.Vertexes() {
 		marked[v] = false
 	}
 

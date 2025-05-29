@@ -4,7 +4,7 @@ import "fmt"
 
 func (tr *components) init() {
 	visited := make(map[string]bool)
-	vs := tr.g.Vertices()
+	vs := tr.g.Vertexes()
 	for v := range vs {
 		visited[v] = false
 	}
@@ -26,7 +26,7 @@ func (tr *components) Calculate() {
 	tr.init()
 
 	// 可以优化
-	for v := range tr.g.Vertices() {
+	for v := range tr.g.Vertexes() {
 		b, _ := tr.visited[v]
 		// 没有被访问过的节点才能参与深度遍历
 		if !b {

@@ -46,7 +46,7 @@ type Graph interface {
 	//  @Description: 获取所有的顶点
 	//  @return Set
 	//
-	Vertices() Set
+	Vertexes() Set
 
 	//
 	// Contains

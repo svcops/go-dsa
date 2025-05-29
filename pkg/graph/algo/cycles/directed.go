@@ -28,7 +28,7 @@ const (
 
 func (dr *directedRing) calculate() {
 	dr.visited = make(map[string]bool)
-	for v := range dr.g.Vertices() {
+	for v := range dr.g.Vertexes() {
 		dr.visited[v] = false
 	}
 	// A -> B -> C ->  D
@@ -39,7 +39,7 @@ func (dr *directedRing) calculate() {
 	//         ↗
 	//        E
 
-	for v := range dr.g.Vertices() {
+	for v := range dr.g.Vertexes() {
 
 		if dr.hasRing {
 			// 如果有环，就不要再遍历了
@@ -48,7 +48,7 @@ func (dr *directedRing) calculate() {
 
 		if !dr.visited[v] {
 			dfsStatus := make(map[string]int)
-			for tmpV := range dr.g.Vertices() {
+			for tmpV := range dr.g.Vertexes() {
 				dfsStatus[tmpV] = dfsInit
 			}
 			dr.directedDfs(v, dfsStatus)

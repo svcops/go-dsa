@@ -31,7 +31,7 @@ func (d *Dfs) FindRoutesByV(src, dest string) [][]string {
 
 	// 初始化节点是否被访问的map
 	visited := make(map[string]bool)
-	for v := range d.g.Vertices() {
+	for v := range d.g.Vertexes() {
 		visited[v] = false
 	}
 

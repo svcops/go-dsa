@@ -13,10 +13,10 @@ type undirectedRing struct {
 
 func (ur *undirectedRing) calculate() {
 	ur.visited = make(map[string]bool)
-	for v := range ur.g.Vertices() {
+	for v := range ur.g.Vertexes() {
 		ur.visited[v] = false
 	}
-	for v := range ur.g.Vertices() {
+	for v := range ur.g.Vertexes() {
 		if ur.hasRing {
 			// 如果找到了环，就不需要再寻找了
 			break

@@ -45,7 +45,7 @@ func (sp *implGraph) VerticesNum() int {
 	return len(sp.g)
 }
 
-func (sp *implGraph) Vertices() graph.Set {
+func (sp *implGraph) Vertexes() graph.Set {
 	return sp.allVertex
 }
 

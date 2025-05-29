@@ -89,8 +89,8 @@ func TestGetAllVertex(t *testing.T) {
 	g := sparse.CreateSparseGraph(true, false)
 	g.Connect("a", "b", 1)
 
-	if g.Vertices().Size() != 2 {
-		t.Error("g.Vertices() error !!!")
+	if g.Vertexes().Size() != 2 {
+		t.Error("g.Vertexes() error !!!")
 	}
 }
 

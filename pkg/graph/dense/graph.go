@@ -67,7 +67,7 @@ func (de *implGraph) VerticesNum() int {
 	return de.increment
 }
 
-func (de *implGraph) Vertices() graph.Set {
+func (de *implGraph) Vertexes() graph.Set {
 	return de.allVertex
 }
 
