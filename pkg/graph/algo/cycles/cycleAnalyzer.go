@@ -1,6 +1,7 @@
 package cycles
 
 import (
+	"fmt"
 	"go-dsa/pkg/graph"
 	"log"
 	"sort"
@@ -28,18 +29,26 @@ func (analyzer *cycleAnalyzer) FindCycles() *AnalyzerResult {
 	vertices := analyzer.g.Vertexes()
 	for vertex := range vertices {
 		if !visited[vertex] {
-			analyzer.dfsFindCycles(vertex, visited, make([]string, 0), make(map[string]bool), result)
+			analyzer.dfsFindCycles(vertex, visited, make([]string, 0), make(map[string]bool), result, 1)
 		}
 	}
 	return result
 }
 
-func (analyzer *cycleAnalyzer) dfsFindCycles(vertex string, visited map[string]bool, path []string, marked map[string]bool, result *AnalyzerResult) {
+func (analyzer *cycleAnalyzer) dfsFindCycles(vertex string, visited map[string]bool, path []string, marked map[string]bool,
+	result *AnalyzerResult, depth int) {
 	visited[vertex] = true
 	path = append(path, vertex)
 	marked[vertex] = true
 
-	log.Printf("开始遍历顶点: %s, 当前路径: %v", vertex, path)
+	indent := fmt.Sprintf("%d  ", depth)
+	for range depth {
+		indent += " - "
+	}
+
+	if analyzer.debug {
+		log.Printf("%s开始遍历顶点: %s, 当前路径: %v", indent, vertex, path)
+	}
 
 	edges := analyzer.g.Adj(vertex)
 	for to, _ := range edges {
@@ -47,12 +56,16 @@ func (analyzer *cycleAnalyzer) dfsFindCycles(vertex string, visited map[string]b
 			// 路径副本
 			pathSnapshot := make([]string, len(path))
 			copy(pathSnapshot, path)
-			log.Printf("顶点 %s 的邻接点 %s 未被访问，继续深度遍历", vertex, to)
-			analyzer.dfsFindCycles(to, visited, pathSnapshot, marked, result)
+			if analyzer.debug {
+				log.Printf("%s顶点 %s 的邻接点 %s 未被访问，继续深度遍历", indent, vertex, to)
+			}
+			analyzer.dfsFindCycles(to, visited, pathSnapshot, marked, result, depth+1)
 		} else {
 			// 当map的key不存在的时候，它的返回值为这个类型的默认返回值
 			if marked[to] == true {
-				log.Printf("顶点 %s 的邻接点 %s 找到环，并记录", vertex, to)
+				if analyzer.debug {
+					log.Printf("%s顶点 %s 的邻接点 %s 找到环，并记录", indent, vertex, to)
+				}
 				// 发现环,记录环
 				cycle := make([]string, 0)
 				for index, v := range path {
@@ -64,13 +77,20 @@ func (analyzer *cycleAnalyzer) dfsFindCycles(vertex string, visited map[string]b
 					}
 				}
 			} else {
+				// important: 如果邻接点已经被访问过，但没有被标记为在当前路径中，则继续深度遍历
 				pathSnapshot := make([]string, len(path))
 				copy(pathSnapshot, path)
-				analyzer.dfsFindCycles(to, visited, pathSnapshot, marked, result)
+				analyzer.dfsFindCycles(to, visited, pathSnapshot, marked, result, depth+1)
 			}
 		}
 	}
+	if analyzer.debug {
+		log.Printf("%s出栈 %s 节点，因为不确定是否还有其他点 ??? --> %s", indent, vertex, vertex)
+	}
 	marked[vertex] = false
+	if analyzer.debug {
+		log.Printf("%s顶点 %s 的所有邻接点已遍历完毕，回溯到上一级", indent, vertex)
+	}
 }
 
 type AnalyzerResult struct {
@@ -114,5 +134,96 @@ func (result *AnalyzerResult) addCycle(cycle []string) {
 }
 
 func (result *AnalyzerResult) PrintCycles() {
-	// todo
+	if len(result.cycles) == 0 {
+		fmt.Println("没有发现环")
+		return
+	}
+
+	fmt.Printf("发现 %d 个环\n", len(result.cycles))
+	for i, cycle := range result.cycles {
+		fmt.Printf("环 %d: ", i+1)
+		printCycle(result.direct, cycle)
+	}
+	fmt.Println()
+}
+
+func printCycle(direct bool, cycle []string) {
+	fmt.Printf("Printing Cycle|Vertex's num = %d|vertexes = %v\n", len(cycle), cycle)
+
+	lineStart := "  "
+	if len(cycle) == 2 {
+		fmt.Println(lineStart + cycle[0] + " <=> " + cycle[1])
+		fmt.Println()
+	}
+	isEven := len(cycle)%2 == 0
+	var mid int
+	if isEven {
+		mid = len(cycle) / 2
+	} else {
+		mid = len(cycle)/2 + 1
+	}
+	// 打印上半部分
+
+	upperLine := lineStart
+	up := cycle[0:mid]
+	for i, v := range up {
+		if i == len(up)-1 {
+			upperLine += v
+		} else {
+			if direct {
+				upperLine += v + " -> "
+			} else {
+				upperLine += v + " -- "
+			}
+		}
+	}
+	fmt.Println(upperLine)
+	// 打印中间部分
+	var midStart string
+	var midEnd string
+	if direct {
+		midStart = lineStart + "↑"
+		if isEven {
+			midEnd = "↓"
+		} else {
+			midEnd = "↙"
+		}
+	} else {
+		midStart = lineStart + "|"
+		midEnd = "|"
+	}
+	midLine := midStart
+	var sub int
+	if isEven {
+		sub = 2
+	} else {
+		if direct {
+			sub = 4
+		} else {
+			sub = 3
+		}
+	}
+	for i := 0; i < len(upperLine)-sub-len(lineStart); i++ {
+		midLine += " "
+	}
+	midLine += midEnd
+	fmt.Println(midLine)
+
+	// 打印下半部分
+	down := cycle[mid:]
+	downLine := lineStart
+	for i := len(down) - 1; i >= 0; i-- {
+		v := down[i]
+		if i == 0 {
+			downLine += v
+		} else {
+			if direct {
+				downLine += v + " <- "
+			} else {
+				downLine += v + " -- "
+			}
+		}
+	}
+	fmt.Println(downLine)
+	fmt.Println()
 }
