@@ -26,12 +26,6 @@ func Test_Directed_Cycle_Analyzer(t *testing.T) {
 }
 
 func Test_InDirected_Cycle_Analyzer(t *testing.T) {
-
-	/*
-			  ↗ B ↘
-			A   ↓   C
-		      ↖ D ↙
-	*/
 	g := sparse.CreateSparseGraph(false, false)
 	g.Connect("A", "B", 1)
 	g.Connect("B", "C", 1)
