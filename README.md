@@ -1,4 +1,6 @@
-# Go语言 数据结构与算法
+# Golang DSA
+
+> Data Structures and Algorithms in Golang
 
 ## 排序
 
