@@ -1,10 +1,20 @@
-# Golang DSA
+# Data Structures and Algorithms in Golang
 
-> Data Structures and Algorithms in Golang
+<!-- TOC -->
+* [Data Structures and Algorithms in Golang](#data-structures-and-algorithms-in-golang)
+  * [排序](#排序)
+  * [查找](#查找)
+    * [二分搜索树](#二分搜索树)
+    * [堆](#堆)
+  * [图](#图)
+    * [图的定义](#图的定义)
+    * [图中的算法](#图中的算法)
+  * [动态规划](#动态规划)
+<!-- TOC -->
 
 ## 排序
 
-[冒泡排序](pkg/sorter/bubble)
+[选择](pkg/sorter/select)
 
 [插入排序](pkg/sorter/insert)
 

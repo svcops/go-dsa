@@ -2,9 +2,9 @@ package sort
 
 import (
 	"go-dsa/pkg/sorter"
-	"go-dsa/pkg/sorter/bubble"
 	"go-dsa/pkg/sorter/insert"
 	"go-dsa/pkg/sorter/quick"
+	"go-dsa/pkg/sorter/select"
 	"testing"
 )
 
@@ -12,7 +12,7 @@ const size = 100000
 
 const simple = true
 
-func Test_Bubble(t *testing.T) {
+func Test_Select(t *testing.T) {
 	arr := generateArr(size, simple, t)
 
 	bubble.Sort(arr)
